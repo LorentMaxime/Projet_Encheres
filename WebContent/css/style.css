@@ -1,0 +1,478 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box !important;
+}
+
+.mw1140p { max-width: 1140px; }
+
+.center {margin-left: auto; margin-right: auto;}
+.right {margin-left: auto;}
+.left {margin-right: auto;}
+
+
+/* -- THEME -- */
+
+* {
+	 font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+	
+}
+
+html {
+	background-color: #FDF8E8;
+}
+
+body {
+	margin: 0;
+
+}
+
+/* -- HEADER -- */
+/* -- HEADER > logo */
+
+/*#logo {
+	font-size: 1.8rem;
+	color: #77933C;
+}*/
+
+header {
+	background-color: #FED67E;
+	position: sticky;
+	top: 0;
+	z-index: 99;
+}
+/* -- HEADER > menu burger */
+
+#burger {display: none;}
+
+#burger-button {
+	font-size: .7em;
+	text-align: center;	
+	text-transform: uppercase;
+	background-color: #B7C88E;
+	color: #fff;
+	padding: .5rem;
+	border-radius: .5rem;
+
+	position: fixed; 
+	top: .5rem;
+	right: .5rem;
+
+	width: 40px;
+	height: 40px;
+
+	cursor: pointer;
+
+	z-index: 99;
+}
+/* Pseudo element before : crée un element ds css comme si code etait ds html
+  et je le pilote comme si ds html */
+#burger-button::before {
+	content: '≡';
+	display: block;
+	font-size: 2rem;
+	line-height: 1.5rem;
+
+	transition: all .3s;
+}
+
+/* ~ : élément voisin autorisant des éléments entre */
+#burger:checked ~ #burger-button {
+	background-color: rgb(128, 0, 0);
+}
+
+/* selection de l'element dont l'id est #burger-button suivant l'element dont l'id est burger et l'état est coché*/
+#burger:checked ~ #burger-button::before {
+	content: '×';	
+	transform: rotate(-180deg);
+}
+
+nav#burger-content {
+	background-color:#ECE5D1;
+	
+	max-width: 200px;
+	width: 100%;
+
+	position: fixed;
+	top:0;
+	bottom:0;
+	left: -100%;
+	z-index: 10;
+	
+	transition:all .3s;
+}
+
+#burger:checked ~ nav#burger-content {
+	left: 0;
+	padding: 0 .5rem 0 0;
+}
+
+#burger:checked ~ #overlay {
+	background-color: rgba(0, 0, 0, .4);
+	position:fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 5;
+	transition: all .3s;
+}
+
+
+/* -- HEADER > navigation */
+
+#lien-cnx {
+	padding: 1rem 0;
+	text-align: right;
+}
+
+nav ul {
+	list-style: none;
+	padding: 1rem 0;
+	margin: 0;
+	text-align: right;
+}
+
+nav ul a {
+	color: rgb(30, 58, 117);
+	text-decoration: none;
+		
+}
+
+nav ul a:hover {
+	text-decoration: underline;
+}
+
+/*#statut-cnx {
+	margin: 3rem 0 0 0;
+	text-align: right;
+	font-style:oblique;
+	margin-right: .5rem;
+}*/
+
+/* -- MAIN -- */
+
+main {
+	margin-top: 5rem;
+}
+
+h1 {
+	text-align: center;
+	color: #A35C1C; 	
+}
+
+
+/* -- MAIN > filtres */
+
+#filtres {
+	border: 1px solid #ccc;
+}
+
+#filtres #recherches > div {
+	border: 1px solid #ccc;
+	display: inline-block;
+}
+
+#btn-achats:checked + label {
+	background-color: #FED67E;
+		
+	width: 57px;
+	height: 25px;
+	border-radius: .3rem;
+	
+	top: 0;
+	z-index: -1;
+}
+
+#btn-ventes:checked + label {
+	background-color: #FED67E;
+	
+	width: 92px;
+	height: 25px;
+	border-radius: .3rem;
+}	
+
+label[for^='btn-'] {
+	cursor: pointer;	
+	border-bottom: 1px solid #ccc;
+}
+
+#selection-achats {	
+	display: flex;
+	flex-direction: column;
+}
+
+#selection-ventes {	
+	display: flex;
+	flex-direction: column;
+}
+
+.checkbox-filtres {
+	display: inline-block;
+}
+
+/* -- MAIN > listes encheres */
+
+
+
+h2 {
+	color: #A35C1C;
+}
+
+aside {
+	margin-bottom: 1rem;
+}
+
+#encheres aside {
+	margin: 1rem 0;
+}
+/* selection de ts les labels dont l'attribut for commence par view */
+label[for^='view-'] {
+	cursor: pointer;	
+}
+
+
+/* -- ajout style sur symboles LISTE et GRILLE -- */	
+[for= 'view-list']::before {
+	content: '≡';
+	display: inline-block;
+	font-size: 1.2rem;
+	margin-right: .2rem;
+}
+
+[for= 'view-grid']::before {
+	content: '⊞';
+	display: inline-block;
+	font-size: 1.2rem;
+	margin-right: .2rem;
+}	
+
+[for^='view-'] {
+	text-transform: uppercase;
+	font-size: .9em;
+}
+/* -- fin ajout style symbole LISTE et GRILLE -- */
+
+/* -- couleur de fond et transition du choix entre liste et grille -- */
+#encheres aside nav{
+	position: relative;
+	display: inline;
+}
+
+	#encheres aside nav label {
+		display: inline-block;
+		min-width: 72px;
+		text-align: center;
+		}	
+		
+#encheres aside nav::before{
+	background-color: #FED67E;
+	
+	content: '';
+	display: inline-block;
+	width: 72px;
+	height: 25px;
+	border-radius: .3rem;
+	
+	position: absolute;
+	top: 0;
+	z-index: -1;
+	
+	transition: all .3s;
+	
+}
+
+#view-list:checked ~ #encheres aside nav::before {
+	left: 0px;
+}
+	
+#view-grid:checked ~ #encheres aside nav::before {
+	left: 75px;	
+}	
+/* -- fin visuel choix -- */
+	
+#encheres article {
+	border-bottom: 1px solid #ccc;
+	padding: 0 .5rem;
+}
+
+	#encheres article img {
+		display: none;
+		width: 100%;
+	}
+
+	#encheres article h3 {
+		font-size: 1.2rem;
+		margin: 0;
+		display: inline-block;
+		margin-right: 1rem;
+		color: #A35C1C;
+	}
+
+	#encheres article div {
+		display: inline-block;
+		padding: 0 .3rem;
+
+	}
+/* even: impair, odd: pair */
+	#encheres article > div > div:nth-child(odd) {
+		font-weight: bold;
+		color: black;
+	}
+	
+#view-list:checked ~ #encheres article .bt {
+	margin-left: 2rem;
+	margin-bottom: .3rem;
+	margin-top:0.3rem;
+	padding: 0 1rem;
+}
+
+#view-list:checked ~ #encheres article > div > div:nth-child(even):after {
+	content: '-';
+	display: inline-block;
+	margin: 0 .3rem;
+	}
+	
+#view-list:checked ~ #encheres article > div > div:last-child::after {
+	content: '';
+	}
+
+#view-grid:checked ~ #encheres article {
+	display: inline-block;
+	max-width: 320p;
+	border : 1px solid #ccc;
+	border-radius: .5rem;
+	box-shadow: 2px 2px 10px rgba(0,0,0,.2);
+	margin: .5rem;
+	padding: .5rem .7rem;
+}	
+
+#view-grid:checked ~ #encheres article div {
+	display: block;
+}
+	
+#view-grid:checked ~ #encheres article img {
+	display: block;
+	width: 100%;
+}		
+
+#view-grid:checked ~ #encheres article h3 {
+	font-size: 1.3rem;
+	margin-top: .5rem;
+	margin-bottom: 1rem;
+}
+
+/* + : élément directement voisin */
+#view-grid:checked ~ #encheres article h3 + div {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	column-gap: .5rem;
+}
+
+
+.bt, button[type='submit'] {
+	display: inline-block;
+	margin: 2px 5px;
+	margin-top: 1rem;
+	padding: .2rem 1.5rem;
+	background-color: rgb(121, 148, 61);
+	color: #fff;
+	border-radius: .5rem;
+	border: 0;
+	text-decoration: none;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+	cursor: pointer;
+	font-size: 1.2rem;
+}
+
+.bt:hover {
+	background-color: rgb(128, 0, 0);
+}
+
+.bt:active {
+	background-color: #FED67E;
+}
+
+ /* -- RESPONSIVE -- */
+
+@media (min-width: 768px) {
+	
+	#logo {
+		height: auto;
+	}
+	
+	#burger-button {
+	display: none;
+	}
+	
+	nav#burger-content {
+	background-color:#ECE5D1;
+	
+	max-width: initial;
+	width: initial;
+
+	position: relative !important;
+	left: 0;
+	transition:all .3s;
+	}
+	
+	nav#burger-content li {
+		display: inline-block;
+		margin-right: 1rem;
+	}
+	
+	[class*= 'grid-'],
+	[class^= 'grid-'] {
+
+	grid-template-columns: repeat(2,1fr);
+	column-gap: 2vw;
+
+
+
+}
+
+
+}
+
+/* -- INSCRIPTION -- */
+
+[class*= 'grid-'],
+[class^= 'grid-'] {
+
+display: grid;
+}
+
+form .grid-2 {
+	margin: .3rem;
+}
+
+h1 {
+	font-size: calc(1.5rem + 1vw);
+}
+
+form {
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5rem;
+}
+
+.bt-inscription {
+	margin-top: 2rem;;
+}
+
+#inscription {
+	margin-top: 3rem;
+}
+
+#bt-inscription1 {
+	margin-left: 450px;	
+}
+
+#bt-inscription2 {
+	margin-left: 50px !important;
+}
+
+@media print {
+	*{color: #000 !important;}
+}
