@@ -1,6 +1,8 @@
 # projetEncheres
-My First Steps in Coding 🚀
+This project is a clone of LeBonCoin
 
-Welcome to one of my earliest coding projects from school. It's a testament to the journey every developer embarks on. While this exercise might not showcase advanced coding techniques, it's an essential part of my coding history.
+My First Steps in Programming 🚀
 
-I keep it here as a gentle reminder of where I started and how far I've come. It's a nod to all beginners out there; we all had our humble beginnings.
+Welcome to one of my very first coding projects from school. This project represents the journey every developer takes. While it may not feature advanced programming techniques, it marks an important stage in my learning.
+
+I keep it here as a reminder of where I started and how far I've come. It's also a nod to all beginners out there: we all start somewhere, with humility.
